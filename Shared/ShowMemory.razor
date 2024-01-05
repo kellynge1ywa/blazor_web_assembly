@@ -1,0 +1,49 @@
+﻿<div class=" p-3" style="">
+    <div class=" row card-body border border-success" style="width:15rem;">
+        <div>
+            <span>@MyMemory.Name</span>
+        </div>
+        <div>
+            <span>@MyMemory.Description</span>
+        </div>
+        <div>
+            <span>@MyMemory.Created</span>
+        </div>
+        <div>
+             <span>@MyMemory.Location</span>
+
+        </div>
+        <div>
+            <button @onclick="UpdateAlbum" type="button" class="btn btn-primary">
+                 Edit
+            </button>
+
+            <button @onclick="DeleteAlbum" type="button" class="btn btn-danger">
+                 Delete
+            </button>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Memory MyMemory {get;set;}=default!;
+    [Parameter]
+     public EventCallback<Memory> OnEditAlbum {get;set;}
+
+    [Parameter]
+     public EventCallback<Memory> OnDeleteAlbum {get;set;}    
+    public async Task UpdateAlbum(){
+        await OnEditAlbum.InvokeAsync(MyMemory);
+    } 
+
+    public async Task DeleteAlbum(){
+        await OnDeleteAlbum.InvokeAsync(MyMemory);
+    }
+
+    
+
+}

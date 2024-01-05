@@ -1,0 +1,80 @@
+﻿@page "/"
+
+<div class="row">
+    <div class="col-4">
+        <AddMemory OnAddAlbum="AddAlbum" ></AddMemory>
+    </div>
+    <div class="col-8">
+        <div class="row">
+            @foreach(var album in Albums){
+                <ShowMemory MyMemory="album" OnEditAlbum="EditAlbum" OnDeleteAlbum="DeleteAlbum"></ShowMemory>
+            }
+
+        </div>
+        
+    </div>
+</div>
+
+@code{
+    private bool Editing= false;
+    public List<Memory> Albums= new List<Memory>(){
+        new Memory(){
+            Id=1,
+            Name="Highschool memory",
+            Description="My high school journey",
+            Created=DateTime.Now,
+            Location="My PC"
+        },
+         new Memory(){
+            Id=2,
+            Name="Roadtrip",
+            Description="My roadtrip adventure",
+            Created=DateTime.Now,
+            Location="Hard drive"
+        },
+         new Memory(){
+            Id=3,
+            Name="Cohort training",
+            Description="My cohort training experience",
+            Created=DateTime.Now,
+            Location="Flash drive"
+        },
+         new Memory(){
+            Id=4,
+            Name="Campus life",
+            Description="My life in campus",
+            Created=DateTime.Now,
+            Location="My PC"
+        }
+    };
+    public void AddAlbum(Memory newMemory){
+        newMemory.Id=Albums.Count +1;
+        Albums.Add(newMemory);
+
+    }
+
+    public void EditAlbum(Memory UpdatedMemory){
+        var album= Albums.Find(a=>a.Id== UpdatedMemory.Id);
+        
+        if(album!=null){
+            album.Name=UpdatedMemory.Name;
+            album.Description=UpdatedMemory.Description;
+            album.Created=UpdatedMemory.Created;
+            album.Location=UpdatedMemory.Location;
+
+        }
+    }
+
+      public void DeleteAlbum(Memory UpdatedMemory){
+        var album= Albums.Find(a=>a.Id== UpdatedMemory.Id);
+        if(album!=null){
+            Albums.Remove(album);
+
+        }
+    }
+    
+
+
+   
+
+}
