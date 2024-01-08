@@ -1029,3 +1029,4 @@ D:\projects\Dotnet\Blazor\Memories\obj\Debug\net8.0\Memories.dll
 D:\projects\Dotnet\Blazor\Memories\obj\Debug\net8.0\refint\Memories.dll
 D:\projects\Dotnet\Blazor\Memories\obj\Debug\net8.0\Memories.pdb
 D:\projects\Dotnet\Blazor\Memories\obj\Debug\net8.0\ref\Memories.dll
+D:\projects\Dotnet\Blazor\Memories\obj\Debug\net8.0\Memories.sourcelink.json
